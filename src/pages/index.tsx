@@ -4,8 +4,10 @@ const index = () => {
 
   return (
 
-    <div>index</div>
-    
+    <div>
+      INDEX
+    </div>
+
   )
 }
 
