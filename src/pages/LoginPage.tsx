@@ -1,8 +1,7 @@
-// pages/login.tsx
-
 import { useState } from 'react';
 import { useLogin } from '../hooks/useLogin';
-import Head from 'next/head';
+import Link from 'next/link';
+
 
 export default function LoginPage() {
   const [email, setEmail] = useState('');
@@ -16,12 +15,45 @@ export default function LoginPage() {
 
   return (
     <>
-      <Head>
-        <title>Login</title>
-      </Head>
-      <div className="min-h-screen flex items-center justify-center bg-gray-100 px-4">
-        <div className="max-w-md w-full bg-white p-8 rounded-xl shadow-md">
-          <h1 className="text-2xl font-bold text-center mb-6">Welcome Back</h1>
+    <div className=" flex items-center justify-center bg-white">
+    
+    <div className="flex w-full shadow-lg rounded-lg overflow-hidden">
+  
+
+       {/* Left side: Image and curve */}
+       <div className="relative w-1/2 bg-blue-700  md:flex items-center justify-center">
+          <div className="w-full h-full rounded-full overflow-hidden border-4 border-white">
+            <img
+              src="images/schoolboy.png" 
+              alt="Student"
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
+
+        {/* Right side: Login form */}
+        <div className="w-full md:w-1/2 p-10">
+        <Link href="/">
+              <span className="text-sm text-gray-600 hover:text-purple-600 cursor-pointer float-right ">
+                &larr; Back to HomePage
+              </span>
+            </Link>
+           
+            <div className='bg-red-400'>
+            <img
+              src="images/schoolLogo.png" 
+              alt="Logo"
+              className="w-[50px] h-[50px] md:w-[100px] md:h-[100px] object-cover m-auto"
+
+            />
+            <h1 className="text-2xl md:text-4xl font-bold block text-center">Welcome</h1>
+            </div>
+
+          <div className="flex justify-between items-center mb-6">
+          </div>
+          
+        
+      
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label htmlFor="email" className="block text-sm font-medium text-gray-700">
@@ -67,7 +99,8 @@ export default function LoginPage() {
               </p>
             )}
           </form>
-        </div>
+      </div>
+      </div>
       </div>
     </>
   );
