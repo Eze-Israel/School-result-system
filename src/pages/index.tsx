@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 
+
 const index = () => {
 
   return (
@@ -11,6 +12,7 @@ const index = () => {
         Go to Login Page
       </button>
     </Link>
+    
     </div>
 
   )

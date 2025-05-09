@@ -24,3 +24,283 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.login {
+  background-color: #652626;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.login .overlap-wrapper {
+  /* background-color: #ffffff; */
+  height: 1024px;
+  width: 1440px;
+}
+
+.login .overlap {
+  height: 1024px;
+  position: relative;
+  width: 1320px;
+}
+
+.login .frame {
+  align-items: center;
+  display: inline-flex;
+  gap: 3px;
+  left: 1150px;
+  position: absolute;
+  top: 33px;
+}
+
+.login .back {
+  height: 16px;
+  position: relative;
+  width: 16px;
+}
+
+.login .text-wrapper {
+  color: #000000;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 20px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 30px;
+  margin-top: -1.00px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.login .overlap-group {
+  height: 1024px;
+  right: 0;
+  /* position: absolute; */
+  top: 0;
+  width: 1238px;
+}
+
+.login .div {
+  height: 461px;
+  left: 809px;
+  position: absolute;
+  top: 180px;
+  width: 429px;
+}
+
+.login .frame-2 {
+  height: 225px;
+  left: 0;
+  position: absolute;
+  top: 236px;
+  width: 429px;
+}
+
+.login .text-wrapper-2 {
+  color: #00000080;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  height: 34px;
+  left: 36px;
+  letter-spacing: 0;
+  line-height: 36px;
+  position: absolute;
+  top: -1px;
+  white-space: nowrap;
+  width: 136px;
+}
+
+.login .div-wrapper {
+  align-items: center;
+  background-color: #5f37ff;
+  border-radius: 10px;
+  display: flex;
+  gap: 10px;
+  height: 45px;
+  justify-content: center;
+  left: 148px;
+  padding: 10px;
+  position: absolute;
+  top: 180px;
+  width: 135px;
+}
+
+.login .text-wrapper-3 {
+  color: #fffefe;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 36px;
+  margin-bottom: -4.50px;
+  margin-top: -6.50px;
+  position: relative;
+  white-space: nowrap;
+  width: fit-content;
+}
+
+.login .eye {
+  height: 20px;
+  right: 409px;
+  position: absolute;
+  top: 89px;
+  width: 20px;
+}
+
+.login .text-wrapper-4 {
+  color: #00000080;
+  font-family: "Inter-Regular", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  height: 34px;
+  left: 36px;
+  letter-spacing: 0;
+  line-height: 36px;
+  position: absolute;
+  top: 78px;
+  white-space: nowrap;
+  width: 122px;
+}
+
+.login .vector {
+  height: 1px;
+  left: 3px;
+  object-fit: cover;
+  position: absolute;
+  top: 118px;
+  width: 426px;
+}
+
+.login .user {
+  height: 30px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 30px;
+}
+
+.login .lock {
+  height: 23px;
+  left: 3px;
+  position: absolute;
+  top: 86px;
+  width: 24px;
+}
+
+.login .img {
+  height: 1px;
+  left: 3px;
+  object-fit: cover;
+  position: absolute;
+  top: 38px;
+  width: 426px;
+}
+
+.login .overlap-group-2 {
+  height: 149px;
+  left: 88px;
+  position: absolute;
+  top: 0;
+  width: 256px;
+}
+
+.login .div-2 {
+  border: 0px none;
+  height: 32px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 256px;
+}
+
+.login .frame-wrapper {
+  align-items: center;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  top: 1px;
+  width: 38px;
+}
+
+.login .frame-3 {
+  height: 30px;
+  position: relative;
+  width: 37.5px;
+}
+
+.login .text-wrapper-5 {
+  color: #1f2937;
+  font-family: "Playfair Display-Regular", Helvetica;
+  font-size: 24px;
+  font-weight: 400;
+  left: 46px;
+  letter-spacing: 0;
+  line-height: 24px;
+  position: absolute;
+  top: 0;
+  width: 205px;
+}
+
+.login .frame-4 {
+  height: 149px;
+  left: 49px;
+  position: absolute;
+  top: 0;
+  width: 158px;
+}
+
+.login .text-wrapper-6 {
+  color: #000000;
+  font-family: "Istok Web-Bold", Helvetica;
+  font-size: 36px;
+  font-weight: 700;
+  height: 54px;
+  left: 0;
+  letter-spacing: 0;
+  line-height: 54px;
+  position: absolute;
+  top: 94px;
+  white-space: nowrap;
+}
+
+.login .vector-2 {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 800px;
+}
+
+.login .overlap-group-wrapper {
+  height: 493px;
+  left: 200px;
+  position: absolute;
+  top: 302px;
+  width: 493px;
+}
+
+.overlap-2 {
+  height: 20px;
+  position: absolute;
+}
+
+.ellipse {
+  /* height: 437px; */
+  left: 189px;
+  object-fit: cover;
+  position: absolute;
+  top: 10px;
+  width: 537px;
+}
+
+.ellipse-2 {
+  /* height: 600px; */
+  left: 140px;
+  position: absolute;
+  top: 30px;
+  width: 540px;
+}

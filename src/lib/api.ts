@@ -1,15 +1,16 @@
+
 export interface LoginPayload {
-    email: string;
+    username: string;
     password: string;
   }
   
-  export const mockLogin = async ({ email, password }: LoginPayload): Promise<{ token: string }> => {
+  export const mockLogin = async ({ username, password }: LoginPayload): Promise<{ token: string }> => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
-        if (email === "user@example.com" && password === "password") {
+        if (username === "2345" && password === "password") {
           resolve({ token: "mock-token-123" });
         } else {
-          reject(new Error("Incorrect email or password"));
+          reject(new Error("Incorrect username or password"));
         }
       }, 1000);
     });
