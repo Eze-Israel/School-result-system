@@ -126,7 +126,7 @@ const Teacher = () => {
             <img
               src="images/NEXT.png" 
               alt="Logo"
-              className="w-[30px] h-[30px]  object-cover m-auto mt-16"
+              className="w-[30px] h-[30px]  object-cover m-auto mt-28"
             />
             <h2 className="text-xl font-bold block text-center  welcome">Next Result System </h2>
             </div>
