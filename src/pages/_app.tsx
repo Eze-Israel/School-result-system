@@ -1,13 +1,16 @@
-import type { AppProps } from 'next/app';
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import '../styles/globals.css';
-
-const queryClient = new QueryClient();
+import "@/styles/globals.css";
+import type { AppProps } from "next/app";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Component {...pageProps} />
-    </QueryClientProvider>
+        <div>
+          <Header />
+          <main>
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+        </div>
   );
 }
