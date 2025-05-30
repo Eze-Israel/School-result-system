@@ -11,7 +11,6 @@ const Footer = () => {
   return (
     <div className='bg-gray-800 text-white py-10'>
       <div className='container mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-10'>
-        {/* about section */}
         <div>
           <h3 className='text-lg font-bold mb-4'>Next Result System</h3>
           <p className='text-sm'>
@@ -23,6 +22,11 @@ const Footer = () => {
           <h3 className='text-lg font-bold mb-4 '> Quick Links</h3>
           <ul className='text-sm'>
 
+            <li className='mb-2'>
+              <Link href="/" className='hover:underline'>
+              Home
+              </Link>
+            </li>
             <li className='mb-2'>
               <Link href="/Gallery" className='hover:underline'>
               Gallery
@@ -42,8 +46,8 @@ const Footer = () => {
             </li>
 
             <li className='mb-2'>
-              <Link href="/cart" className='hover:underline'>
-              Cart
+              <Link href="/News" className='hover:underline'>
+              News
               </Link>
             </li>
           </ul>
@@ -52,8 +56,8 @@ const Footer = () => {
         <div>
           <h3 className='text-lg font-bold mb-4 '> Contact Us </h3>
           <ul className='text-sm'>
-            <li className='mb-2'>Email: support@agrocommerce.vercel.app</li>
-            <li className='mb-2'>Address: 123 Agro Street, Green City</li>
+            <li className='mb-2'>Email:support@nextresultsystem.com</li>
+            <li className='mb-2'>Address: 123 Ago Street, Okota Lagos</li>
           </ul>
         </div>
         {/* social media section */}
