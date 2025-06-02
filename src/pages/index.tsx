@@ -1,11 +1,13 @@
 import React from 'react'
-import Home from '@/components/Home'
+import Hero from '@/components/Hero'
+import HomeAbout from '@/components/HomeAbout'
 
 const index = () => {
   return (
     <div>
       
-     <Home/>
+     <Hero/>
+     <HomeAbout/>
       
       </div>
   )

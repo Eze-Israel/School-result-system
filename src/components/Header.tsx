@@ -36,7 +36,7 @@ const Header: React.FC = () => {
 
 
   return (
-    <div className='bg-gray-800 text-white p-4 lg:px-16 shadow:md sticky top-0 z-50 md:flex justify-between'>
+    <div className='bg-gray-800 text-white p-4 lg:px-24 shadow:md sticky top-0 z-50 md:flex justify-between'>
      <button onClick={toggleMenu} className="sticky top-4 left-8  z-50 text-blue-500 text-2xl mb-3 bars">
         {isOpen ? <FaTimes /> : <FaBars />}
       </button>
@@ -82,7 +82,7 @@ const Header: React.FC = () => {
         </motion.nav>
       )}
     </div>
-        <div className='flex md:space-x-100'> 
+        <div className='flex md:space-x-80'> 
        {!isOpen && (
         <Link className='flex flex-row' href="/">
         <Image
@@ -93,7 +93,7 @@ const Header: React.FC = () => {
         priority
         className='cursor-pointer rounded-full relative'
         />
-        <h1 className='md:text-4xl'>Next Result System</h1>
+        <h1 className='md:text-3xl'>Next Result System</h1>
         </Link>
       )}
           <div className='hidden md:block'>
