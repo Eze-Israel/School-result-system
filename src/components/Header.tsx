@@ -13,7 +13,7 @@ import {
   DocumentCheckIcon,
   // ClipboardDocumentCheckIcon
 } from  '@heroicons/react/24/outline';
-import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/24/solid";
+import { ChevronDownIcon, ChevronUpIcon, ChevronDoubleLeftIcon, ChevronDoubleRightIcon } from "@heroicons/react/24/solid";
 
 const Header: React.FC = () => { 
   const router = useRouter();
@@ -54,9 +54,9 @@ const Header: React.FC = () => {
                 <a
                   href={href}
                   className="w-full flex items-center space-x-3 text-left 
-                  text-lg p-3 rounded-lg hover:bg-yellow-900 mt-3"
+                  text-lg p-3 rounded-lg hover:bg-black/40 mt-3"
                 >
-                  <Icon className="w-5 h-5 text-green-600" />
+                  <Icon className="w-5 h-5 text-blue-500" />
                   <span>{label}</span>
                 </a>
                 
@@ -66,14 +66,19 @@ const Header: React.FC = () => {
           <div>
                <button
               onClick={() => setDropdownOpen(!dropdownOpen)}
-              className="text-white hover:underline flex flex-end md:hidden relative bg-black/70 py-2 px-6 mt-3 mx-auto"
+              className="text-white-300 rounded flex flex-end md:hidden relative bg-black/70 py-2 px-6 mt-3 mb-1 hover:bg-blue-600 "
             >
              Login
+             {dropdownOpen ? (
+                    <ChevronDoubleLeftIcon className=" ml-2 w-4 h-6" />
+                  ) : (
+                    <ChevronDoubleRightIcon className=" ml-2 w-4 h-6" />
+                  )}
             </button>
             {dropdownOpen && (
-                <div className="px-4 flex  w-fit absolute bg-black gap-1 mx-auto">
-                  <Link className="hover:bg-blue-700 p-3 rounded px-3" href="/Teacher">Log in as a Teacher</Link>
-                <Link className="hover:bg-blue-700 p-3 rounded px-3"   href="/Student">Log in as a Student</Link>
+                <div className=" flex w-fit absolute bg-black gap-1 ml-[25%] rounded mb-8 top-113">
+                  <Link className="hover:bg-blue-700 p-2 rounded px-3 border-l-2 border-l-yellow-400" href="/Teacher">Teachers Login</Link>
+                <Link className="hover:bg-blue-700 p-2 rounded px-3 border-l-2 border-l-yellow-400"   href="/Student">Students Login</Link>
                 </div>
                 
             )}
@@ -93,10 +98,10 @@ const Header: React.FC = () => {
         priority
         className='cursor-pointer rounded-full relative'
         />
-        <h1 className='md:text-3xl'>Next Result System</h1>
+        <h1 className='md:text-3xl mt-2'>Next Result System</h1>
         </Link>
       )}
-          <div className='hidden md:block'>
+          <div className='hidden md:block mt-3'>
             {!isOpen && (
               <div className='flex justify-end gap-3'>
             <div >
@@ -130,7 +135,7 @@ const Header: React.FC = () => {
                   )}
             </button>
             {dropdownOpen && (
-                <div className="px-4 flex flex-col w-fit absolute bg-black/70 pr-4">
+                <div className="px-4 mt-[2%] flex flex-col w-fit absolute bg-black/70 pr-4 ">
                   <Link className="hover:bg-blue-700 p-3  text-center" href="/Teacher">Log in as a Teacher</Link>
                 <Link className="hover:bg-blue-700 p-3  text-center border-t-1 border-t-yellow-400"   href="/Student">Log in as a Student</Link>
                 </div>
