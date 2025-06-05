@@ -6,7 +6,7 @@ const HomeAbout = () => {
 
 
   return (
-    <div className='flex md:flex-row flex-col gap-3 px-4 mt-8'>
+    <div className='flex md:flex-row flex-col gap-3 px-4 md:mt-8'>
          <AnimatePresence mode="wait">
         <motion.div className="md:w-[50%]"
         initial={{ opacity: 0, x: -300 }}
