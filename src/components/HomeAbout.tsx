@@ -35,15 +35,15 @@ const HomeAbout = () => {
             <p className='mb-8'> Next Imperial Team is a smart school platform designed for schools in-order for students to have direct access to their results, also giving parent and guardians the opportunity to view and print out their child / children result(s) 
                  instantly with just a scratch card at anytime and place convenient using a smartphones, Tablet, PC or Desktops.</p>
                   {" "}
-            <p>1: "Next Imperial Team – Empowering Schools with Modern, Professional Websites to Elevate Their Digital Presence."</p>
+            <p>1: &quot;Next Imperial Team – Empowering Schools with Modern, Professional Websites to Elevate Their Digital Presence.&quot;</p>
 
-            <p>2: "Next Imperial Team – Helping Schools Shine Online with Modern, Professional Websites."</p>
+            <p>2: &quot;Next Imperial Team – Helping Schools Shine Online with Modern, Professional Websites.&quot;</p>
 
-            <p>3: "Next Imperial Team – Crafting Powerful, Professional Websites That Bring Schools into the Digital Age."</p>
+            <p>3: &quot;Next Imperial Team – Crafting Powerful, Professional Websites That Bring Schools into the Digital Age.&quot;</p>
 
-            <p>4: "Next Imperial – Building Smart, Modern Websites That Empower Schools Online."</p>
+            <p>4: &quot;Next Imperial – Building Smart, Modern Websites That Empower Schools Online.&quot;</p>
 
-            <p>5: "Next Imperial Team – Transforming School Websites for a Stronger, Smarter Digital Presence</p>
+            <p>5: &quot;Next Imperial Team – Transforming School Websites for a Stronger, Smarter Digital Presence&quot;</p>
 
             </motion.div>
         </AnimatePresence>
