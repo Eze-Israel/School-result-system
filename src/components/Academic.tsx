@@ -9,7 +9,7 @@ const Academic = () => {
         <h1 className='text-center md:text-4xl text-2xl text-blue-900 my-8 font-bold'>OUR ACADEMIC PROGRAME</h1>
         <AnimatePresence mode='wait'>
         <motion.div className='grid md:grid-cols-3 grid-cols-1 gap-3  mb-2 px-4'
-        initial={{ opacity: 0, x: -300 }}
+        initial={{ opacity: 0, x: -100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.9, ease: 'easeOut' }}
                 viewport={{ once: true, amount: 0.2 }} 
@@ -55,7 +55,7 @@ const Academic = () => {
 
          <AnimatePresence mode='wait'>
         <motion.div className='grid md:grid-cols-3 grid-cols-1 gap-3 px-4'
-            initial={{ opacity: 0, x: +300 }}
+            initial={{ opacity: 0, x: +100 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.9, ease: 'easeOut' }}
                 viewport={{ once: true, amount: 0.2 }} 
