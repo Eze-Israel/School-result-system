@@ -9,7 +9,7 @@ const HomeAbout = () => {
     <div className='flex md:flex-row flex-col gap-3 md:px-4 px-3 md:mt-8 mt-3'>
          <AnimatePresence mode='wait'>
         <motion.div className="md:w-[50%] order-2 md:order-1"
-        initial={{ opacity: 1, x: 300 }}
+        initial={{ opacity: 0.1, x: -100 }}
         whileInView={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.9, ease: 'easeOut' }}
         viewport={{ once: true, amount: 0.2 }} 
@@ -19,7 +19,7 @@ const HomeAbout = () => {
             width={200}
             height={200}
             alt='About Image'
-            className='w-full '
+            className='w-full'
             
             />
         </motion.div>
