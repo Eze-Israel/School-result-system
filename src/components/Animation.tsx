@@ -37,7 +37,7 @@ export default function AnimatedCarousel() {
   }, [])
 
   return (
-    <div className="relative w-full h-[500px] overflow-hidden  shadow-lg">
+    <div className="relative w-full h-[500px] overflow-hidden  shadow-lg ">
       <AnimatePresence mode="wait">
         <motion.div
           key={index}

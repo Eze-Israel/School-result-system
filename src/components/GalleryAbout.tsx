@@ -5,9 +5,8 @@ const GalleryAbout = () => {
 
   return (
 
-    <div className='mt-10 grid md:grid-cols-2 grid-cols-1 bg-black'>
-        <div className=''>
-        <div>
+    <div className=' '>
+        <div className='grid md:grid-cols-3 grid-cols-1 gap-3 w-full mb-2'>
         <Image
         alt='galleryPhoto'
         height={300}
@@ -15,8 +14,6 @@ const GalleryAbout = () => {
         src="/images/Gallery1.png"
         className='w-full'
         />
-        </div>
-        <div>
           <Image
         alt='galleryPhoto'
         height={300}
@@ -25,8 +22,6 @@ const GalleryAbout = () => {
         className='w-full'
 
         />
-        </div>
-        <div>
           <Image
         alt='galleryPhoto'
         height={300}
@@ -36,9 +31,7 @@ const GalleryAbout = () => {
 
         />
         </div>
-        </div>
-        <div className=''>
-        <div>
+        <div className='grid md:grid-cols-3 grid-cols-1 gap-3 w-full '>
           <Image
         alt='galleryPhoto'
         height={300}
@@ -47,8 +40,6 @@ const GalleryAbout = () => {
         className='w-full'
 
         />
-        </div>
-        <div>
           <Image
         alt='galleryPhoto'
         height={300}
@@ -57,8 +48,6 @@ const GalleryAbout = () => {
         className='w-full'
 
         />
-        </div>
-        <div>
           <Image
         alt='galleryPhoto'
         height={300}
@@ -67,7 +56,6 @@ const GalleryAbout = () => {
         className='w-full'
 
         />
-        </div>
         </div>
         
         </div>
