@@ -89,7 +89,9 @@ const Teacher = () => {
                    {showPassword ? <FaEye /> : <FaEyeSlash /> }
                </div>
             </div>
-
+           <div className='text-center'>
+            <p className='hover:underline'>forgot password?  </p>
+             </div>
             <button
               type="submit"
               disabled={loginMutation.isPending}
@@ -180,6 +182,10 @@ const Teacher = () => {
                </div>
             </div>
 
+           <div className='text-center'>
+            <p className='hover:underline'>forgot password?  </p>
+             </div>
+
             <button
               type="submit"
               disabled={loginMutation.isPending}
@@ -188,6 +194,7 @@ const Teacher = () => {
             >
               {loginMutation.isPending ? 'Logging in...' : 'Log in'}
             </button>
+            
             {loginMutation.isError && (
               <p className="text-red-500 text-sm text-center mt-4">
                 {(loginMutation.error as Error).message}
@@ -198,7 +205,9 @@ const Teacher = () => {
                 Logged in successfully!
               </p>
             )}
+            
           </form>
+          
           </div>
           </div>
         </div>

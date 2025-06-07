@@ -41,10 +41,11 @@ export default function AnimatedCarousel() {
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
-          initial={{ opacity: 0, x: 100 }}
+          initial={{ opacity: 1, x: 100 }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: -100 }}
           transition={{ duration: 0.8 }}
+          
           className="absolute top-0 left-0 w-full h-full"
         >
           <img

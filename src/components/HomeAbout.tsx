@@ -32,7 +32,7 @@ const HomeAbout = () => {
         >
             <h2 className='mb-2 font-bold'>About us:</h2>
 
-            <p className='mb-8'> Next Imperial Team is a smart school platform designed for schools in-order for students to have direct access to their results, also giving parent and guardians the opportunity to view and print out their child / children result(s) 
+            <p className='md:mb-8'> Next Imperial Team is a smart school platform designed for schools in-order for students to have direct access to their results, also giving parent and guardians the opportunity to view and print out their child / children result(s) 
                  instantly with just a scratch card at anytime and place convenient using a smartphones, Tablet, PC or Desktops.</p>
                   {" "}
             <p>1: &quot;Next Imperial Team – Empowering Schools with Modern, Professional Websites to Elevate Their Digital Presence.&quot;</p>

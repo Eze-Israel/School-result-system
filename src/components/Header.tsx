@@ -27,7 +27,7 @@ const Header: React.FC = () => {
       { label: "About Us", icon: UserGroupIcon, href: "/about" },
       { label: "Results", icon:  DocumentCheckIcon, href: "/contact" },
       { label: "Gallery", icon: PhotoIcon, href: "/contact" },
-      { label: "News", icon: NewspaperIcon, href: "/contact" },
+      { label: "News", icon: NewspaperIcon, href: "/News" },
       { label: "Contact", icon: PhoneIcon, href: "/contact" },
       // { label: "News", icon:  ClipboardDocumentCheckIcon , href: "/contact" },
     ];

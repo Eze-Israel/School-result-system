@@ -93,7 +93,7 @@ const Footer = () => {
         </div>
       </div>
       {/* Bottom Footer */}
-      <div className='text-center mt-10 text-sm border-t border-green-700 pt-4'>
+      <div className='text-center mt-10 text-sm border-t border-blue-700 pt-4'>
         <p>&copy; {date} Next Result System. All rights reserved.</p>
       </div>
       </div>
