@@ -23,7 +23,7 @@ const Academic = () => {
         />
         <h2 className='text-left text-blue-500'>Result Checker</h2>
         <p>
-        School Forum Scratch Cards On Mobile, PC or Tablets? it doesn't matter. 
+        School Forum Scratch Cards On Mobile, PC or Tablets? it doesn&apos;t matter. 
         Check your school results anytime, anyday right from the comfort of you palm.
         </p>
         </div>
