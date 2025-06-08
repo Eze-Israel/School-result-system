@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, ChangeEvent } from "react";
-import { Upload, BookOpen, FileText, ClipboardList, LucideIcon } from "lucide-react";
+import {  BookOpen, FileText, ClipboardList, LucideIcon } from "lucide-react";
 import clsx from "clsx";
 
 // ---------------- Types ----------------
