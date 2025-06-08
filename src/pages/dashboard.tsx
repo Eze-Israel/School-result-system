@@ -1,13 +1,8 @@
 "use client";
 
 import { useState, ChangeEvent } from "react";
-import { BookOpen, ClipboardList, FileText, LucideIcon } from "lucide-react";
+import { Upload, BookOpen, FileText, ClipboardList, LucideIcon } from "lucide-react";
 import clsx from "clsx";
-import * as pdfjsLib from "pdfjs-dist/build/pdf";
-import pdfjsWorker from "pdfjs-dist/build/pdf.worker.entry";
-
-// ✅ Set the workerSrc with type-safe workaround
-(pdfjsLib as any).GlobalWorkerOptions.workerSrc = pdfjsWorker;
 
 // ---------------- Types ----------------
 type TabName = "Results" | "Assignments" | "Projects";
@@ -27,6 +22,7 @@ interface SidebarProps {
   setCurrentTab: (tab: TabName) => void;
 }
 
+// ---------------- Dummy Data ----------------
 const dummyResults: Result[] = [
   { subject: "Mathematics", score: 85 },
   { subject: "English", score: 78 },
@@ -63,36 +59,15 @@ const Sidebar = ({ currentTab, setCurrentTab }: SidebarProps) => {
 };
 
 // ---------------- Dashboard ----------------
-export default function Dashboard({
-  user = { role: "teacher", name: "John Doe" },
-}: {
-  user: User;
-}) {
+export default function Dashboard({ user = { role: "teacher", name: "John Doe" } }: { user: User }) {
   const [currentTab, setCurrentTab] = useState<TabName>("Results");
-  const [pdfText, setPdfText] = useState<string>("");
-  const isTeacher = user.role === "teacher";
+  const isTeacher = user?.role === "teacher";
 
-  const handlePdfUpload = async (event: ChangeEvent<HTMLInputElement>) => {
+  const handlePdfUpload = (event: ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (file && file.type === "application/pdf") {
-      const reader = new FileReader();
-
-      reader.onload = async function () {
-        const typedArray = new Uint8Array(this.result as ArrayBuffer);
-        const pdf = await pdfjsLib.getDocument({ data: typedArray }).promise;
-
-        let fullText = "";
-        for (let i = 1; i <= pdf.numPages; i++) {
-          const page = await pdf.getPage(i);
-          const content = await page.getTextContent();
-          const text = content.items.map((item: any) => item.str).join(" ");
-          fullText += `\n\nPage ${i}:\n${text}`;
-        }
-
-        setPdfText(fullText);
-      };
-
-      reader.readAsArrayBuffer(file);
+      alert(`PDF Uploaded: ${file.name}`);
+      // Upload logic here (e.g., to Firebase/S3)
     } else {
       alert("Please upload a valid PDF file.");
     }
@@ -103,6 +78,7 @@ export default function Dashboard({
       <Sidebar currentTab={currentTab} setCurrentTab={setCurrentTab} />
 
       <main className="flex-1 bg-gray-100 p-4 md:p-6 overflow-auto">
+        {/* Mobile tab select */}
         <div className="md:hidden mb-4">
           <select
             className="w-full p-2 rounded border border-gray-300"
@@ -140,24 +116,13 @@ export default function Dashboard({
 
               {isTeacher && (
                 <div className="mt-4 flex flex-col gap-2">
-                  <label className="block font-medium text-gray-700">
-                    Upload Results PDF
-                  </label>
+                  <label className="block font-medium text-gray-700">Upload Results PDF</label>
                   <input
                     type="file"
                     accept="application/pdf"
                     onChange={handlePdfUpload}
                     className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-600 file:text-white hover:file:bg-blue-700"
                   />
-                </div>
-              )}
-
-              {isTeacher && pdfText && (
-                <div className="mt-6 bg-gray-100 p-4 rounded shadow">
-                  <h3 className="font-semibold mb-2">Extracted PDF Content:</h3>
-                  <pre className="whitespace-pre-wrap text-sm text-gray-800">
-                    {pdfText}
-                  </pre>
                 </div>
               )}
             </div>
