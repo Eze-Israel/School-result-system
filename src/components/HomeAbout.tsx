@@ -15,7 +15,7 @@ const HomeAbout = () => {
         viewport={{ once: true, amount: 0.2 }} 
         >
             <Image
-            src="/images/About.png"  
+            src="/images/About.jpg"  
             width={200}
             height={200}
             alt='About Image'

@@ -38,13 +38,14 @@ const Header: React.FC = () => {
      <button onClick={toggleMenu} className="sticky top-4 left-8  z-50 text-blue-500 text-2xl mb-3 bars">
         {isOpen ? <FaTimes /> : <FaBars />}
       </button>
-     <div className='navMenu '>
+      <div >
       {isOpen && (
         <motion.nav
           initial={{ x: "-100%" }}
           animate={{ x: 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 20 }}
-          // className="fixed inset-0 z-40 bg-green-50 p-4"/
+          // START FROM HERE
+          className=" navMenu w-full h-screen z-50"
         >
           <ul className="flex flex-col space-y-2 bg-gray-800/70">
             {menuItems.map(({ label, icon: Icon, href }) => (
@@ -75,8 +76,8 @@ const Header: React.FC = () => {
             </button>
             {dropdownOpen && (
                 <div className=" flex w-fit absolute bg-black gap-1 ml-[25%] rounded mb-8 top-113">
-                  <Link className="hover:bg-blue-700 p-2 rounded px-3 border-l-2 border-l-yellow-400" href="/Teacher">Teachers Login</Link>
-                <Link className="hover:bg-blue-700 p-2 rounded px-3 border-l-2 border-l-yellow-400"   href="/Student">Students Login</Link>
+                  <Link onClick={toggleMenu} className="hover:bg-blue-700 p-2 rounded px-3 border-l-2 border-l-yellow-400" href="/Teacher">Teachers Login</Link>
+                <Link onClick={toggleMenu} className="hover:bg-blue-700 p-2 rounded px-3 border-l-2 border-l-yellow-400"   href="/Student">Students Login</Link>
                 </div>
                 
             )}
@@ -91,8 +92,8 @@ const Header: React.FC = () => {
         <Image
         src="/images/NEXT.png"
         alt='NextLogo'
-        width={50}
-        height={50}
+        width={40}
+        height={40}
         priority
         className='cursor-pointer rounded-full relative'
         />

@@ -1,17 +1,22 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { Swiper, SwiperSlide } from 'swiper/react'
+import { Autoplay } from 'swiper/modules'
+import 'swiper/css'
+import 'swiper/css/autoplay'
 
 const slides = [
   {
     image: '/images/Slide1.png',
-    title: 'Welcome to Next Result System',
-    subtitle: 'Bringing Digital Results to your Door step',
+    title:
+      'Welcome to Next Result System we digital result system to your doorstep',
+    subtitle: 'The digital and mobile result system',
   },
   {
     image: '/images/Slide2.png',
-    title: 'Connect and Access Your Results any where in the world',
+    title:
+      'Connect and Access Your Results any where in the world from your Desktop, Phone or Tablet',
     subtitle: 'Using Next Result System',
   },
   {
@@ -26,58 +31,48 @@ const slides = [
   },
 ]
 
-export default function AnimatedCarousel() {
-  const [index, setIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % slides.length)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
-
+export default function SwiperCarousel() {
   return (
-    <div className="relative w-full h-[500px] overflow-hidden  shadow-lg ">
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={index}
-          initial={{ opacity: 1, x: 100 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -100 }}
-          transition={{ duration: 0.8 }}
-          
-          className="absolute top-0 left-0 w-full h-full"
-        >
-          <img
-            src={slides[index].image}
-            alt={`Slide ${index}`}
-            className="object-cover w-full h-full bg-black"
-          />
+    <div className="relative w-full overflow-hidden shadow-lg min-h-screen">
+      <Swiper
+        modules={[Autoplay]}
+        autoplay={{ delay: 5000, disableOnInteraction: true }}
+        loop
+        className="w-full h-full"
+      >
+        {slides.map((slide, index) => (
+          <SwiperSlide key={index}>
+            <div className="relative w-full h-screen">
+              <img
+                src={slide.image}
+                alt={`Slide ${index}`}
+                className="object-cover w-full h-full bg-black"
+              />
 
-          {/* Overlay Text Container */}
-          <div className="absolute bottom-16 left-8 bg-black/60 p-6 rounded-xl max-w-xl text-white space-y-2">
-            <motion.h2
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ delay: 0.3 }}
-              className="md:text-3xl font-bold"
-            >
-              {slides[index].title}
-            </motion.h2>
+              {/* Overlay Text Container */}
+              <div className="absolute bottom-16 md:left-8 bg-black/60 p-6 rounded-xl max-w-xl text-white space-y-2">
+                <motion.h2
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className="md:text-3xl font-bold"
+                >
+                  {slide.title}
+                </motion.h2>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ delay: 0.5 }}
-              className="md:text-lg"
-            >
-              {slides[index].subtitle}
-            </motion.p>
-          </div>
-        </motion.div>
-      </AnimatePresence>
+                <motion.p
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.5 }}
+                  className="md:text-lg"
+                >
+                  {slide.subtitle}
+                </motion.p>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   )
 }

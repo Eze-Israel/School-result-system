@@ -66,27 +66,27 @@ const Footer = () => {
           <ul className='flex space-x-1 text-sm'>
             <li>
               <a href='#'>
-              <FaFacebook  className='p-4 rounded-full text-black text-6xl' />
+              <FaFacebook  className='p-4 rounded-full text-blue-700 text-6xl' />
               </a>
             </li>
             <li>
               <a href='#'>
-              <FaTwitter  className='p-4 rounded-full text-black text-6xl'/>
+              <FaTwitter  className='p-4 rounded-full text-blue-700 text-6xl'/>
               </a>
             </li>
             <li>
               <a href='#'>
-              <FaLinkedin  className='p-4 rounded-full text-black text-6xl' />
+              <FaLinkedin  className='p-4 rounded-full text-blue-700 text-6xl' />
               </a>
             </li>
             <li>
               <a href='#'>
-              <FaInstagram  className='p-4 rounded-full text-black text-6xl'/>
+              <FaInstagram  className='p-4 rounded-full text-blue-700 text-6xl'/>
               </a>
             </li>
             <li>
               <a href='#'>
-              <FaWhatsapp  className='p-4 rounded-full text-black text-6xl' />
+              <FaWhatsapp  className='p-4 rounded-full text-blue-700 text-6xl' />
               </a>
             </li>
           </ul>

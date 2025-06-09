@@ -3,7 +3,7 @@ import AnimatedCarousel from './Animation'
 
 export default function Hero() {
   return (
-    <div className=" bg-gray-100">
+    <div >
       <AnimatedCarousel />
     </div>
   )
