@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 const Academic = () => {
   return (
     <div className='my-12'>
-        <h1 className='text-center md:text-4xl text-2xl text-blue-900 my-8 font-bold'>OUR ACADEMIC PROGRAME</h1>
+        <h1 className='text-center md:text-4xl text-2xl text-blue-500 hover:underline my-8 font-bold'>OUR ACADEMIC PROGRAME</h1>
         <AnimatePresence mode='wait'>
         <motion.div className='grid md:grid-cols-3 grid-cols-1 gap-3  mb-2 px-4'
         initial={{ opacity: 0, x: -100 }}
@@ -34,7 +34,7 @@ const Academic = () => {
         width={50}
         src="/images/chatlogo.png"
         />
-        <h2>School Forum</h2>
+        <h2 className='text-blue-500'>School Forum</h2>
         <p className='text-black'>Comprehensive curriculum with
             College preparatory program with
             emphasis on critical thinking.
@@ -47,7 +47,7 @@ const Academic = () => {
         width={50}
         src="/images/scratcard.png"
         />
-        <h2>Scratch Cards</h2>
+        <h2 className='text-blue-500'>Scratch Cards</h2>
         <p className='text-black'>College preparatory program with advanced placement options.</p>
         </div>
         </motion.div>

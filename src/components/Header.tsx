@@ -25,8 +25,8 @@ const Header: React.FC = () => {
     const menuItems = [
       { label: "Home", icon: HomeIcon, href: "/" },
       { label: "About Us", icon: UserGroupIcon, href: "/about" },
-      { label: "Results", icon:  DocumentCheckIcon, href: "/contact" },
-      { label: "Gallery", icon: PhotoIcon, href: "/contact" },
+      { label: "Results", icon:  DocumentCheckIcon, href: "/Student" },
+      { label: "Gallery", icon: PhotoIcon, href: "/Gallery" },
       { label: "News", icon: NewspaperIcon, href: "/News" },
       { label: "Contact", icon: PhoneIcon, href: "/contact" },
       // { label: "News", icon:  ClipboardDocumentCheckIcon , href: "/contact" },
@@ -34,7 +34,7 @@ const Header: React.FC = () => {
 
 
   return (
-    <div className='bg-gray-800 text-white p-4 lg:px-24 shadow:md sticky top-0 z-50 md:flex justify-between'>
+    <div className='bg-gray-800 text-white p-4 lg:px-31 shadow:md sticky top-0 z-50 md:flex justify-between'>
      <button onClick={toggleMenu} className="sticky top-4 left-8  z-50 text-blue-500 text-2xl mb-3 bars">
         {isOpen ? <FaTimes /> : <FaBars />}
       </button>
@@ -76,8 +76,8 @@ const Header: React.FC = () => {
             </button>
             {dropdownOpen && (
                 <div className=" flex w-fit absolute bg-black gap-1 ml-[25%] rounded mb-8 top-113">
-                  <Link onClick={toggleMenu} className="hover:bg-blue-700 p-2 rounded px-3 border-l-2 border-l-yellow-400" href="/Teacher">Teachers Login</Link>
-                <Link onClick={toggleMenu} className="hover:bg-blue-700 p-2 rounded px-3 border-l-2 border-l-yellow-400"   href="/Student">Students Login</Link>
+                  <Link onClick={toggleMenu} className="hover:bg-blue-700 p-2 rounded px-3 border-l-2 border-l-blue-400" href="/Teacher">Teachers Login</Link>
+                <Link onClick={toggleMenu} className="hover:bg-blue-700 p-2 rounded px-3 border-l-2 border-l-blue-400"   href="/Student">Students Login</Link>
                 </div>
                 
             )}
@@ -97,7 +97,7 @@ const Header: React.FC = () => {
         priority
         className='cursor-pointer rounded-full relative'
         />
-        <h1 className='md:text-3xl mt-2'>Next Result System</h1>
+        <h1 className='md:text-3xl mt-1 ml-2'>Next Result System</h1>
         </Link>
       )}
           <div className='hidden md:block mt-3'>
@@ -135,7 +135,7 @@ const Header: React.FC = () => {
             </button>
             {dropdownOpen && (
                 <div className="px-4 mt-[2%] flex flex-col w-fit absolute bg-black/70 pr-4 ">
-                  <Link className="hover:bg-blue-700 p-3  text-center" href="/Teacher">Log in as a Teacher</Link>
+                  <Link  className="hover:bg-blue-700 p-3  text-center" href="/Teacher">Log in as a Teacher</Link>
                 <Link className="hover:bg-blue-700 p-3  text-center border-t-1 border-t-yellow-400"   href="/Student">Log in as a Student</Link>
                 </div>
                 

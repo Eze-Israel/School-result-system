@@ -7,6 +7,7 @@ const GalleryAbout = () => {
   return (
 
     <div className='px-2 md:px-0 '>
+      <h2 className='font-bold text-blue-700 text-center md:text-4xl text-xl p-6 hover:underline'>Gallery</h2>
         <AnimatePresence mode='wait'>
         <motion.div className='grid md:grid-cols-3 grid-cols-1 gap-3 w-full mb-2'
         initial={{ opacity: 0.1, x: -100 }}
