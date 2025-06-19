@@ -12,6 +12,7 @@ import {
   LogOut,
   LayoutDashboard,
   Bell,
+  X,
   Menu,
 } from "lucide-react";
 import clsx from "clsx";
@@ -36,8 +37,9 @@ interface Result {
 interface SidebarProps {
   currentTab: TabName;
   setCurrentTab: (tab: TabName) => void;
-  show: boolean;
-  onClose: () => void;
+  mobile?: boolean;
+  show?: boolean;
+  onClose?: () => void;
 }
 
 // ---------------- Dummy Data ----------------
@@ -53,6 +55,7 @@ const dummyResults: Result[] = [
 const Sidebar = ({
   currentTab,
   setCurrentTab,
+  mobile,
   show,
   onClose,
 }: SidebarProps) => {
@@ -70,26 +73,21 @@ const Sidebar = ({
   return (
     <>
       {/* Backdrop */}
-      { show && (
+      {mobile && show && (
         <div
-          className="fixed inset-0 z-40 md:hidden"
+          className="fixed inset-0 bg-black bg-opacity-40 backdrop-blur-sm z-40 md:hidden"
           onClick={onClose}
         />
       )}
-   
 
       <aside
-       className={clsx(
-          "bg-[#090342] text-white min-h-screen w-64 p-4  transition-transform duration-300 md:px-10 z-50",
-          // Desktop: show always (relative by default)
-          "hidden md:block md:relative",
-
-          // Mobile: slide in and fixed
-          show
-            ? "fixed top-0 left-0 translate-x-0"
-            : "fixed top-0 left-0 -translate-x-full",
-
-          "md:translate-x-0" // Ensure always visible on desktop
+        className={clsx(
+          "bg-[#090342] text-white w-64 p-4 z-50 transform transition-transform duration-300 fixed md:relative top-0 left-0 h-full",
+          mobile
+            ? show
+              ? "translate-x-0"
+              : "-translate-x-full"
+            : "translate-x-0"
         )}
       >
         <img
@@ -137,17 +135,13 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
 
   return (
     <div className="flex overflow-hidden relative">
-      
-    <Sidebar
-      currentTab={currentTab}
-      setCurrentTab={(tab) => {
-        setCurrentTab(tab);
-        setShowSidebar(false);
-      }}
-      show={showSidebar}
-      onClose={() => setShowSidebar(false)}
-    />
-
+      <Sidebar
+        currentTab={currentTab}
+        setCurrentTab={setCurrentTab}
+        mobile={true}
+        show={showSidebar}
+        onClose={() => setShowSidebar(false)}
+      />
 
       <main className="flex-1 bg-gray-100 overflow-auto min-h-screen">
         {/* Mobile Top Bar */}
@@ -156,8 +150,21 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
             className="text-white p-2 md:hidden"
             onClick={() => setShowSidebar(true)}
           >
-           {/* {MOBILE ICON} */}
-            <Menu/>
+            {/* Hamburger Icon */}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
           </button>
 
           <input
@@ -177,7 +184,7 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
         </div>
 
         {/* Mobile Search */}
-        <div className="px-6 block md:hidden">
+        <div className="px-4 block md:hidden">
           <input
             type="text"
             placeholder="Search"
@@ -207,38 +214,18 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
               </div>
             </div>
 
-            <div className="flex flex-col md:flex-row justify-between gap-3 mx-10">
-                <div className="bg-green-400 w-60 h-40 rounded-[10] ml-5 flex ">
-                  <p className="mb-6">Student</p>
-                  <div>
-                  <div><img src="images/cap.png" alt="cap" className="h-[15] w-[15]"/>  </div>
-                  <div> <p>500{"(Active)"}</p></div>
-                  </div>
-                  <div>
-                 <div><img src="images/cap.png" alt="cap" className="h-[15] w-[15]"/> <p>{"(250)"}</p></div>
-                 <div><img src="images/cap.png" alt="cap" className="h-[15] w-[15]"/> <p>{"(250)"}</p></div>
-                 </div>
-                </div>
-
-                <div className="bg-blue-500 w-60 h-40 rounded-[10] ">
+            <div className="flex flex-col md:flex-row justify-between gap-3 mx-4 md:mx-10">
+              {["green", "blue", "green", "yellow"].map((color, i) => (
+                <div
+                  key={i}
+                  className={`bg-${color}-400 w-60 h-40 rounded-[10px] flex flex-col justify-center items-center text-white`}
+                >
                   <span>Student</span>
-                  <img src="images/cap.png" alt="cap" className="h-[15] w-[15]"/>
-                  <span><User/></span>
+                  <img src="/images/cap.png" alt="cap" className="h-6 w-6" />
+                  <User />
                 </div>
-
-                <div className="bg-green-400 w-60 h-40 rounded-[10] ">
-                  <span>Student</span>
-                  <img src="images/cap.png" alt="cap" className="h-[15] w-[15]"/>
-                  <span><User/></span>
-                </div>
-
-                <div className="bg-yellow-300 w-60 h-40 rounded-[10] mr-5">
-                  <span>Student</span>
-                  <img src="images/cap.png" alt="cap" className="h-[15] w-[15]"/>
-                  <span><User/></span>
-                </div>
-
-              </div>
+              ))}
+            </div>
           </section>
         )}
 
