@@ -228,7 +228,7 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
                   <div className="flex justify-between flex-col md:ml-4">
                   <div className="flex items-left flex-col">
                   <GraduationCapIcon className="h-[40] w-[50] text-black rounded-full mr-2"/>
-                  <span className="text-md">500{"(active)"}</span>
+                  <span className="text-md ml-2">500{"(active)"}</span>
                   </div>
 
                   <div className="flex items-end flex-col">
