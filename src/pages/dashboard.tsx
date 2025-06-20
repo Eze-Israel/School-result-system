@@ -13,9 +13,14 @@ import {
   LayoutDashboard,
   Bell,
   Menu,
+  GraduationCapIcon,
 } from "lucide-react";
 import clsx from "clsx";
 import UserProfile from "@/components/UserProfile";
+import Barchart from "@/components/Barchart";
+import Calendar from "@/components/Calender";
+import { motion, AnimatePresence } from 'framer-motion'
+
 
 // ---------------- Types ----------------
 type TabName =
@@ -81,21 +86,23 @@ const Sidebar = ({
       <aside
        className={clsx(
           "bg-[#090342] text-white min-h-screen w-64 p-4  transition-transform duration-300 md:px-10 z-50",
-          // Desktop: show always (relative by default)
-          "hidden md:block md:relative",
-
-          // Mobile: slide in and fixed
-          show
-            ? "fixed top-0 left-0 translate-x-0"
-            : "fixed top-0 left-0 -translate-x-full",
-
-          "md:translate-x-0" // Ensure always visible on desktop
+          "fixed md:relative",
+          show ? "translate-x-0" : "-translate-x-full",
+          "md:translate-x-0 md:block"
+          
         )}
+        
       >
-        <img
-          className="text-2xl font-bold mb-10 mx-auto rounded-full"
-          src="/images/cap2.jpg"
+         
+        <motion.img
+            className="text-2xl font-bold mb-10 mx-auto rounded-full"
+            src="/images/cap2.jpg"
+            alt="graduationcap"
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 2 }}
         />
+
         <nav className="flex flex-col gap-4">
           {tabs.map((tab) => (
             <button
@@ -187,7 +194,13 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
 
         {/* Tabs Content */}
         {currentTab === "Dashboard" && (
-          <section>
+          <AnimatePresence>
+          <motion.section  
+            initial={{ opacity: 0, x: +200 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 2, ease: 'easeOut' }}
+                // viewport={{ once: true, amount: 0.2 }}
+          >
             <div className="bg-[#090342] text-white p-4 rounded h-40 mt-10 mx-4 md:mx-10 mb-12 rounded-[20px] flex justify-between">
               <div className="mx-2 md:mx-10">
                 {dayOfWeek}, {currentDate} {currentMonth} {currentYear}
@@ -206,41 +219,78 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
                 />
               </div>
             </div>
-
-            <div className="flex flex-col md:flex-row justify-between gap-3 mx-10">
-                <div className="bg-green-400 w-60 h-40 rounded-[10] ml-5 flex ">
-                  <p className="mb-6">Student</p>
-                  <div>
-                  <div><img src="images/cap.png" alt="cap" className="h-[15] w-[15]"/>  </div>
-                  <div> <p>500{"(Active)"}</p></div>
+            
+             {/* Cards for Students Data */}
+            <div className="flex flex-col md:flex-row justify-between gap-3 mx-10 ">
+              {/* first */}
+                <div className="bg-green-400 md:w-60 w-full h-40 rounded-[10] md:ml-5">
+                  <h2 className="mb-4 ml-4 font-semibold">Student</h2>
+                  <div className="flex justify-between flex-col md:ml-4">
+                  <div className="flex items-left flex-col">
+                  <GraduationCapIcon className="h-[40] w-[50] text-black rounded-full mr-2"/>
+                  <span className="text-md">500{"(active)"}</span>
                   </div>
-                  <div>
-                 <div><img src="images/cap.png" alt="cap" className="h-[15] w-[15]"/> <p>{"(250)"}</p></div>
-                 <div><img src="images/cap.png" alt="cap" className="h-[15] w-[15]"/> <p>{"(250)"}</p></div>
+
+                  <div className="flex items-end flex-col">
+                 <div className="flex items-center mr-6 ">
+                  <img src="images/StandMan.png" alt="cap" className="h-[25] w-[25]"/>
+                   <span>{"(250)"}</span>
+                   </div>
+
+                 <div className="flex items-center mr-6">
+                  <img src="images/Woman.png" alt="cap" className="h-[25] w-[25] mr-1"/> 
+                  <span>{"(250)"}</span>
+                  </div>
+                 </div>
                  </div>
                 </div>
+                {/* end of first */}
 
-                <div className="bg-blue-500 w-60 h-40 rounded-[10] ">
-                  <span>Student</span>
-                  <img src="images/cap.png" alt="cap" className="h-[15] w-[15]"/>
-                  <span><User/></span>
+                {/* Second Div */}
+                  <div className="flex justify-between flex-col bg-blue-500 md:w-60 w-full h-40 rounded-[10]">
+                  <h2 className="mb-4 ml-4 font-semibold">Staff</h2>
+                  <div className="flex items-left flex-col ml-2">
+                  <img src="/images/BossMan.png" className="h-[30] w-[30] text-black rounded-full "/>
+                  <span className="text-md">25 {"(active)"}</span>
+                  </div>
+
+                  <div className="flex items-end flex-col mr-6">
+                 <div className="flex items-center ">
+                   <span>{"(10)"}</span>
+                   </div>
+                 <div className="flex items-center">
+                  <span>{"(15)"}</span>
+                  </div>
+                 </div>
                 </div>
+                  {/* End of Second Div */}
 
-                <div className="bg-green-400 w-60 h-40 rounded-[10] ">
-                  <span>Student</span>
-                  <img src="images/cap.png" alt="cap" className="h-[15] w-[15]"/>
-                  <span><User/></span>
+                  {/* Third Div */}
+                <div className="bg-green-400 md:w-60 w-full h-40 rounded-[10] ">
+                  <h2 className="mb-4 ml-4 font-semibold">Classes</h2>
+                  <img src="images/Students.png" alt="cap" className="h-[25] w-[25] ml-4"/>
+                  <p className="text-center left-[50%] ">10</p>
                 </div>
+                {/* end of third div */}
 
-                <div className="bg-yellow-300 w-60 h-40 rounded-[10] mr-5">
-                  <span>Student</span>
-                  <img src="images/cap.png" alt="cap" className="h-[15] w-[15]"/>
-                  <span><User/></span>
+                {/* Fourth div */}
+               <div className="bg-yellow-300 md:w-60 w-full h-40 rounded-[10] ">
+                  <h3 className="mb-4 ml-4 font-semibold">Subjects</h3>
+                  <img src="images/ReturnBook.png" alt="cap" className="h-[25] w-[25] ml-4"/>
+                  <p className="text-center left-[50%] ">40</p>
                 </div>
-
+                {/* end */}
               </div>
-          </section>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-25 gap-4 mx-10 mt-6">
+                <Barchart />
+                <Calendar />
+           </div>
+          </motion.section>
+          </AnimatePresence>
         )}
+              
+
 
         {currentTab === "Results" && (
           <section>
@@ -280,6 +330,29 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
             <div className="bg-white shadow rounded p-4 mx-4 md:mx-10">
               <h2 className="text-xl font-semibold mb-2">Projects</h2>
               <p>Project submissions and evaluations go here.</p>
+            </div>
+          </section>
+        )}
+        {currentTab === "Profile" && (
+          <section>
+            <div className="bg-white shadow rounded p-4 mx-4 md:mx-10">
+              <h2 className="text-xl font-semibold mb-2">Profile Info</h2>
+            </div>
+          </section>
+        )}
+        {currentTab === "Messages" && (
+          <section>
+            <div className="bg-white shadow rounded p-4 mx-4 md:mx-10">
+              <h2 className="text-xl font-semibold mb-2">Message</h2>
+              <p>Messages go here.</p>
+            </div>
+          </section>
+        )}
+        {currentTab === "Settings" && (
+          <section>
+            <div className="bg-white shadow rounded p-4 mx-4 md:mx-10">
+              <h2 className="text-xl font-semibold mb-2">Settings</h2>
+              <p>Editing and Setting tools goes here go here.</p>
             </div>
           </section>
         )}
