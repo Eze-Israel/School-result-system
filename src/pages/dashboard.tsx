@@ -201,7 +201,7 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
                 transition={{ duration: 2, ease: 'easeOut' }}
                 // viewport={{ once: true, amount: 0.2 }}
           >
-            <div className="bg-[#090342] text-white p-4 rounded h-40 md:mt-10 mt-4 mx-4 md:mx-10 mb-12 rounded-[20px] flex justify-between">
+            <div className="bg-[#090342] text-white p-4 rounded h-40 md:mt-10 mt-4 mx-2 md:mx-10 mb-12 rounded-[20px] flex justify-between">
               <div className="mx-2 md:mx-10">
                 {dayOfWeek}, {currentDate} {currentMonth} {currentYear}
                 <h1 className="font-bold my-4 md:text-2xl">
