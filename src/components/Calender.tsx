@@ -17,7 +17,7 @@ const Calendar = () => {
 
   return (
     <div className="bg-white rounded-lg shadow p-4 w-full md:w-[400px]">
-      <h3 className="text-lg font-bold text-center mb-4">
+      <h3 className="text-lg font-bold text-center mb-4 text-black">
         {today.format('MMMM YYYY')}
       </h3>
       <div className="grid grid-cols-7 gap-2 text-center">

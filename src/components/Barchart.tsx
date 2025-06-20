@@ -20,7 +20,7 @@ const data = [
 const Barchart = () => {
   return (
     <div className="bg-white rounded-lg shadow p-4 w-full md:w-[500px]">
-      <h3 className="text-lg font-bold mb-4 text-center">
+      <h3 className="text-lg font-bold mb-4 text-center text-black">
         Student Performance Overview
       </h3>
       <ResponsiveContainer width="100%" height={300}>

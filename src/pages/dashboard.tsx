@@ -188,7 +188,7 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
           <input
             type="text"
             placeholder="Search"
-            className="w-full h-[40px] px-3 border text-white border-gray-300 rounded-[10px] bg-gray-800 mb-4"
+            className="w-full h-[40px] px-3 border text-white border-gray-300 rounded-[10px] bg-gray-800 md:mb-4"
           />
         </div>
 
@@ -201,13 +201,13 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
                 transition={{ duration: 2, ease: 'easeOut' }}
                 // viewport={{ once: true, amount: 0.2 }}
           >
-            <div className="bg-[#090342] text-white p-4 rounded h-40 mt-10 mx-4 md:mx-10 mb-12 rounded-[20px] flex justify-between">
+            <div className="bg-[#090342] text-white p-4 rounded h-40 md:mt-10 mt-4 mx-4 md:mx-10 mb-12 rounded-[20px] flex justify-between">
               <div className="mx-2 md:mx-10">
                 {dayOfWeek}, {currentDate} {currentMonth} {currentYear}
                 <h1 className="font-bold my-4 md:text-2xl">
                   Welcome back, {user.name}!
                 </h1>
-                <p className="text-white">
+                <p className="text-white text-sm">
                   Because Great Teaching Deserves Great Online Presence
                 </p>
               </div>
@@ -221,7 +221,7 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
             </div>
             
              {/* Cards for Students Data */}
-            <div className="flex flex-col md:flex-row justify-between gap-3 mx-10 ">
+            <div className="flex flex-col md:flex-row justify-between gap-3 md:mx-10 mx-4 ">
               {/* first */}
                 <div className="bg-green-400 md:w-60 w-full h-40 rounded-[10] md:ml-5">
                   <h2 className="mb-4 ml-4 font-semibold">Student</h2>
@@ -250,7 +250,7 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
                   <div className="flex justify-between flex-col bg-blue-500 md:w-60 w-full h-40 rounded-[10]">
                   <h2 className="mb-4 ml-4 font-semibold">Staff</h2>
                   <div className="flex items-left flex-col ml-2">
-                  <img src="/images/BossMan.png" className="h-[30] w-[30] text-black rounded-full "/>
+                  <img src="/images/Bossman.png" className="h-[30] w-[30] text-black rounded-full "/>
                   <span className="text-md">25 {"(active)"}</span>
                   </div>
 
@@ -282,7 +282,7 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
                 {/* end */}
               </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-25 gap-4 mx-10 mt-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 md:gap-25 gap-4 md:mx-10 mx-4 mt-6">
                 <Barchart />
                 <Calendar />
            </div>

@@ -134,7 +134,7 @@ const Header: React.FC = () => {
                   )}
             </button>
             {dropdownOpen && (
-                <div className="px-4 mt-[2%] flex flex-col w-fit absolute bg-black/70 pr-4 ">
+                <div className="px-4 mt-[1.5%] flex flex-col w-fit absolute bg-black/70 pr-4 ">
                   <Link  className="hover:bg-blue-700 p-3  text-center" href="/Teacher">Log in as a Teacher</Link>
                 <Link className="hover:bg-blue-700 p-3  text-center border-t-1 border-t-yellow-400"   href="/Student">Log in as a Student</Link>
                 </div>
