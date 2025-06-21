@@ -121,15 +121,15 @@ const ResultForm: React.FC = () => {
     return test + exam;
   };
 
-  const generateComment = (score: string | undefined): string => {
-    const s = parseFloat(score || '0');
-    if (s >= 80) return 'Excellent';
-    if (s >= 70) return 'Very good';
-    if (s >= 65) return 'Good';
-    if (s >= 50) return 'Credit';
-    if (s >= 40) return 'Pass';
-    return 'Fail';
-  };
+  const generateComment = (score: number): string => {
+  if (score >= 80) return 'Excellent';
+  if (score >= 70) return 'Very good';
+  if (score >= 65) return 'Good';
+  if (score >= 50) return 'Credit';
+  if (score >= 40) return 'Pass';
+  return 'Fail';
+};
+
 
    const handleSubmitResults = () => {
     const resultPayload = students.map((student) => {
