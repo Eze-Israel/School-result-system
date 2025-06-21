@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect } from 'react';
+import React, { useState, ChangeEvent } from 'react';
 import { Trash2 } from 'lucide-react';
 import Swal from 'sweetalert2';
 
