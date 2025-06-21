@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import StudentCards from "@/components/StudentCards";
-import ResultForm from "@/components/ResultForm";
 import {
   BookOpen,
   Folder,
@@ -10,7 +9,6 @@ import {
   LucideIcon,
   MessageSquare,
   User,
-  Settings,
   LogOut,
   LayoutDashboard,
   Bell,
@@ -30,7 +28,6 @@ type TabName =
   | "Projects"
   | "Results"
   | "Assignments"
-  | "Settings"
   | "Messages"
   | "Logout";
 
@@ -55,7 +52,6 @@ const Sidebar = ({
     { name: "Messages", icon: MessageSquare },
     { name: "Assignments", icon: ClipboardList },
     { name: "Projects", icon: Folder },
-    { name: "Settings", icon: Settings },
     { name: "Logout", icon: LogOut },
   ];
 
@@ -112,7 +108,7 @@ const Sidebar = ({
 };
 
 // ---------------- Dashboard ----------------
-export default function Dashboard({ user = { name: "King Israel" } }) {
+export default function StudentDash({ user = { name: "King Israel" } }) {
   const [currentTab, setCurrentTab] = useState<TabName>("Dashboard");
   const [showSidebar, setShowSidebar] = useState(false);
 
@@ -216,7 +212,8 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
         {currentTab === "Results" && (
           <section>
             <div className="bg-white shadow rounded p-4 mx-4 md:mx-10">
-            <ResultForm/>
+              <h2 className="text-xl font-semibold mb-4">Results</h2>
+            <p>Results from Backend will be stored here </p>
             </div>
           </section>
         )}
@@ -253,14 +250,7 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
             </div>
           </section>
         )}
-        {currentTab === "Settings" && (
-          <section>
-            <div className="bg-white shadow rounded p-4 mx-4 md:mx-10">
-              <h2 className="text-xl font-semibold mb-2">Settings</h2>
-              <p>Editing and Setting tools goes here go here.</p>
-            </div>
-          </section>
-        )}
+        
       </main>
     </div>
   );

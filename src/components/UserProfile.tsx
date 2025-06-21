@@ -59,13 +59,15 @@ export default function UserProfile({ userId, profilePicUrl }: UserProfileDropdo
             
             </div>
             <div className='flex items-center flex-row hover:underline text-white mb-5 px-4 '>
-              <PenLineIcon className='text-white w-4 h-4'/>
+              <PenLineIcon className=' text-white w-4 h-4'/>
             <button
-              onClick={() => alert('Change password')}
-              className="text-sm text-white rounded "
+              onClick={() => alert('Change profile picture')}
+              className=" text-sm 
+               rounded"
             >
               Change Password
             </button>
+            
             </div>
             <div className='flex items-center flex-row hover:underline text-white my-10 px-4 '>
                 <LogOut className='text-white w-4 h-4 '/>
