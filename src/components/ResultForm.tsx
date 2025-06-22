@@ -21,7 +21,7 @@ interface BehaviourRatings {
 
 interface StudentScores {
   [key: number]: {
-    error: any;
+    error?: string;
     test: string;
     exam: string;
   };
@@ -87,7 +87,7 @@ const ResultForm: React.FC = () => {
     let num = parseFloat(value);
     if (isNaN(num)) num = 0;
 
-    if ((type === 'test' && num > 40) || (type === 'exam' && num > 60) || num < 0) {
+    if ((type === 'test' && num > 40) || (type === 'exam' && num > 60) || num < 0 || isNaN(num)) {
       Swal.fire({
         icon: 'error',
         title: 'Invalid Score',
