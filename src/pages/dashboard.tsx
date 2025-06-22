@@ -215,7 +215,7 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
 
         {currentTab === "Results" && (
           <section>
-            <div className="bg-white shadow rounded p-4 mx-4 md:mx-10">
+            <div className="bg-white shadow rounded p-4 mx-4 md:mx-10 text-black">
             <ResultForm/>
             </div>
           </section>

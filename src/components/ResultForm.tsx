@@ -51,11 +51,12 @@ const ResultForm: React.FC = () => {
   const [students, setStudents] = useState<Student[]>([]);
   const [studentScores, setStudentScores] = useState<StudentScores>({});
 
-    const [levelOptions, setLevelOptions] = useState<string[]>(['JSS1', 'JSS2', 'SS1','SS2']);
-    const [sessionOptions, setSessionOptions] = useState<string[]>(['2023/2024', '2024/2025']);
-    const [termOptions, setTermOptions] = useState<string[]>(['First', 'Second', 'Third']);
-    const [classOptions, setClassOptions] = useState<string[]>(['Red', 'Blue', 'Green']);
-    const [subjectOptions, setSubjectOptions] = useState<string[]>(['Math', 'English', 'Biology', 'Civic']);
+  const levelOptions: string[] = ['junior secondary', 'senior secondary', 'primary'];
+  const sessionOptions: string[] = ['2023/2024', '2024/2025'];
+  const termOptions: string[] = ['First', 'Second', 'Third'];
+  const classOptions: string[] = ['jss1', 'jss2', 'ss1', 'ss2'];
+  const subjectOptions: string[] = ['Math', 'English', 'Biology', 'Civic'];
+
 
   const isReadyToLoad = Object.values(formValues).every((val) => val);
 
