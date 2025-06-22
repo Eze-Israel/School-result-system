@@ -452,13 +452,14 @@ const ResultForm: React.FC = () => {
 
   {activeSection === 'New Result Comment' && (
     <div className='bg-gray-200 text-black text-center'>
+      
       <h2 className='font-bold mb-3 text-2xl'>Here is the general updated comments for 2024/2025 Academic section</h2>
-    <p>if score is 80 or above  'Excellent'</p>
-    <p>if score is 70 or above 'Very good'</p>
-    <p>if score 65 or above 'Good';</p>
-    <p>if score is 50 or above  'Credit';</p>
-    <p>if score is 40 or above 'Pass';</p>
-    <p>if score is below 40 'Fail';</p>
+        <p>If score is 80 or above &apos;Excellent&apos;</p>
+        <p>If score is 70 or above &apos;Very good&apos;</p>
+        <p>If score is 65 or above &apos;Good&apos;</p>
+        <p>If score is 50 or above &apos;Credit&apos;</p>
+        <p>If score is 40 or above &apos;Pass&apos;</p>
+        <p>If score is below 40 &apos;Fail&apos;</p>
 
     </div>
 
