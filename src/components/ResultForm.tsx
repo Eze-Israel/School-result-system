@@ -110,9 +110,6 @@ const ResultForm: React.FC = () => {
     setStudents([]);
   };
 
-  const handleBehaviourChange = (trait: string, value: string) => {
-    setBehaviourRatings({ ...behaviourRatings, [trait]: value });
-  };
 
   const handleLoadStudents = () => {
     const selectedClass = formValues.Class;
@@ -197,7 +194,7 @@ const ResultForm: React.FC = () => {
 
   return (
     <div className="p-4">
-      <div className="flex flex-wrap gap-2 mb-4 bg-black p-6">
+      <div className="flex flex-wrap mb-4 bg-black p-6 md:mx-30 justify-center">
         {sections.map((section) => (
           <button
             key={section}
@@ -230,25 +227,6 @@ const ResultForm: React.FC = () => {
                     subjectOptions).map((opt) => (
                     <option key={opt} value={opt}>{opt}</option>
                   ))}
-                </select>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-4">
-            <div className='bg-gray-300 p-2 block mb-4 text-center'>
-              <h3 className='font-bold text-xl'>Select Social Behavioural information:</h3>
-              <p>Key: 1- Very Poor, 2- Poor, 3- Fair, 4- Good, 5- Excellent</p>
-            </div>
-            {behaviours.map((trait) => (
-              <div key={trait} className="flex flex-col">
-                <label>{trait}</label>
-                <select
-                  className="border p-2 rounded w-25 text-center"
-                  onChange={(e: ChangeEvent<HTMLSelectElement>) => handleBehaviourChange(trait, e.target.value)}
-                >
-                  <option value="">Select</option>
-                  {[1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n}</option>)}
                 </select>
               </div>
             ))}
@@ -336,8 +314,160 @@ const ResultForm: React.FC = () => {
           )}
         </div>
       )}
+      
+       {activeSection === 'New Social Behaviour' && (
+  <div>
+     <div className='bg-gray-300 p-2 block mb-4 text-center'>
+          <h3 className='font-bold text-xl'>Select Social Behavioural information:</h3>
+          <p>Key: 1- Very Poor, 2- Poor, 3- Fair, 4- Good, 5- Excellent</p>
+        </div>
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex flex-col w-full md:w-1/3">
+          <label className="mb-1">Level</label>
+          <select
+            className="border p-2 rounded"
+            value={formValues.Level || ''}
+            onChange={(e) => handleChange('Level', e.target.value)}
+          >
+            <option value="">Select Level</option>
+            {levelOptions.map((lvl) => (
+              <option key={lvl} value={lvl}>{lvl}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex flex-col w-full md:w-1/3">
+          <label className="mb-1">Class</label>
+          <select
+            className="border p-2 rounded"
+            value={formValues.Class || ''}
+            onChange={(e) => handleChange('Class', e.target.value)}
+          >
+            <option value="">Select Class</option>
+            {classOptions.map((cls) => (
+              <option key={cls} value={cls}>{cls}</option>
+            ))}
+          </select>
+        </div>
+
+        <div className="flex flex-col w-full md:w-1/3">
+          <label className="mb-1">Session</label>
+          <select
+            className="border p-2 rounded"
+            value={formValues.Session || ''}
+            onChange={(e) => handleChange('Session', e.target.value)}
+          >
+            <option value="">Select Session</option>
+            {sessionOptions.map((s) => (
+              <option key={s} value={s}>{s}</option>
+            ))}
+          </select>
+        </div>
+      </div>
+
+      <button
+        className={`mt-4 px-4 py-2 bg-green-600 text-white rounded ${
+          formValues.Level && formValues.Class && formValues.Session ? '' : 'opacity-50 cursor-not-allowed'
+        }`}
+        disabled={!formValues.Level || !formValues.Class || !formValues.Session}
+        onClick={() => setStudents(allStudents)} // load all students based on class (mocked for now)
+      >
+        Load Students
+      </button>
+
+      {students.length > 0 && (
+        <div className="mt-6">
+          <h3 className="text-lg font-semibold mb-2">
+            Behavioural Ratings - Class {formValues.Class}
+          </h3>
+          <table className="w-full border text-left">
+            <thead>
+              <tr>
+                <th className="p-2 border">Student</th>
+                {behaviours.map((trait) => (
+                  <th key={trait} className="p-2 border text-center">{trait}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {students.map((student) => (
+                <tr key={student.id}>
+                  <td className="p-2 border">{student.name}</td>
+                  {behaviours.map((trait) => (
+                    <td key={trait} className="p-2 border">
+                      <select
+                        className="border p-1 rounded w-full text-center"
+                        onChange={(e: ChangeEvent<HTMLSelectElement>) =>
+                          setBehaviourRatings(prev => ({
+                            ...prev,
+                            [`${student.id}-${trait}`]: e.target.value
+                          }))
+                        }
+                      >
+                        <option value="">--</option>
+                        {[1, 2, 3, 4, 5].map((n) => (
+                          <option key={n} value={n}>{n}</option>
+                        ))}
+                      </select>
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <button
+            className="mt-4 px-6 py-2 bg-blue-700 text-white rounded"
+            onClick={() => {
+              const behaviouralPayload = students.map((student) => {
+                const data: Record<string, string> = {};
+                behaviours.forEach((trait) => {
+                  const key = `${student.id}-${trait}`;
+                  data[trait] = behaviourRatings[key] || '';
+                });
+
+                return {
+                  studentId: student.id,
+                  name: student.name,
+                  class: formValues.Class,
+                  level: formValues.Level,
+                  session: formValues.Session,
+                  behaviour: data
+                };
+              });
+
+              console.log('Submitting Behavioural Traits:', behaviouralPayload);
+              Swal.fire({ icon: 'success', title: 'Behavioural data submitted!' });
+
+              setBehaviourRatings({});
+              setStudents([]);
+            }}
+          >
+            Submit Behavioural Ratings
+          </button>
+        </div>
+      )}
     </div>
-  );
-};
+  )}
+
+  {activeSection === 'New Result Comment' && (
+    <div className='bg-gray-200 text-black text-center'>
+      <h2 className='font-bold mb-3 text-2xl'>Here is the general updated comments for 2024/2025 Academic section</h2>
+    <p>if score is 80 or above  'Excellent'</p>
+    <p>if score is 70 or above 'Very good'</p>
+    <p>if score 65 or above 'Good';</p>
+    <p>if score is 50 or above  'Credit';</p>
+    <p>if score is 40 or above 'Pass';</p>
+    <p>if score is below 40 'Fail';</p>
+
+    </div>
+
+  )}
+
+
+      </div>
+    );
+  };
 
 export default ResultForm;
+

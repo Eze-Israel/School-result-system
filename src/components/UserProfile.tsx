@@ -30,7 +30,7 @@ export default function UserProfile({ userId, profilePicUrl }: UserProfileDropdo
         className="flex items-center space-x-2 cursor-pointer"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="text-sm text-white">Israel: {userId}</span>
+        <span className="text-sm text-white">{userId}</span>
         <img
           src={profilePicUrl}
           alt="Profile"
@@ -39,14 +39,14 @@ export default function UserProfile({ userId, profilePicUrl }: UserProfileDropdo
       </div>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 bg-black shadow-lg rounded-lg p-4 z-50">
+        <div className="absolute right-0 mt-2 md:mt-5 w-64 bg-black shadow-lg rounded-lg p-4 z-50">
           <div className="flex flex-col items-center">
             <img
               src={profilePicUrl}
               alt="Profile Large"
               className="w-24 h-24 rounded-full object-cover border border-gray-300 my-2"
             />
-            <p className="text-sm text-white mb-4">User ID: {userId}</p>
+            <p className="text-sm text-white mb-4">User:{userId}</p>
             <div className='flex items-center flex-row hover:underline text-white mb-5 px-4 '>
               <User className=' text-white w-4 h-4'/>
             <button

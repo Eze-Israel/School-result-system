@@ -8,12 +8,12 @@ import {
   Folder,
   ClipboardList,
   LucideIcon,
-  MessageSquare,
+  MessageSquareText,
   User,
   Settings,
   LogOut,
   LayoutDashboard,
-  Bell,
+  BellDotIcon,
   Menu,
 } from "lucide-react";
 import clsx from "clsx";
@@ -52,7 +52,7 @@ const Sidebar = ({
     { name: "Dashboard", icon: LayoutDashboard },
     { name: "Profile", icon: User },
     { name: "Results", icon: BookOpen },
-    { name: "Messages", icon: MessageSquare },
+    { name: "Messages", icon: MessageSquareText },
     { name: "Assignments", icon: ClipboardList },
     { name: "Projects", icon: Folder },
     { name: "Settings", icon: Settings },
@@ -123,7 +123,7 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
   const currentYear = date.getFullYear();
 
   const mockUser = {
-    id: "user_12345",
+    id: "King Israel",
     profilePic: "/images/passport.jpg",
   };
 
@@ -157,8 +157,8 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
           />
 
           <div className="flex flex-row md:gap-6 gap-3">
-            <Bell className="text-blue-500 mr-3" />
-            <MessageSquare className="text-blue-500" />
+            <BellDotIcon className="text-blue-500 mr-3" />
+            <MessageSquareText className="text-blue-500" />
             <UserProfile
               userId={mockUser.id}
               profilePicUrl={mockUser.profilePic}
@@ -215,9 +215,7 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
 
         {currentTab === "Results" && (
           <section>
-            <div className="bg-white shadow rounded p-4 mx-4 md:mx-10 text-black">
             <ResultForm/>
-            </div>
           </section>
         )}
 
