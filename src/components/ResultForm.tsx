@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from 'react';
+import React, { useState, ChangeEvent, useEffect } from 'react';
 import { Trash2 } from 'lucide-react';
 import Swal from 'sweetalert2';
 
@@ -27,6 +27,40 @@ interface StudentScores {
   };
 }
 
+const curriculum: Record<string, { classes: string[]; subjects: string[] }> = {
+  'Lower Primary': {
+    classes: ['Basic 1', 'Basic 2', 'Basic 3'],
+    subjects: [
+      'English', 'Mathematics', 'Basic Science', 'Civic Education', 'Yoruba',
+      'Verbal Reasoning', 'Quantitative Reasoning', 'Handwriting'
+    ],
+  },
+  'Upper Primary': {
+    classes: ['Basic 4', 'Basic 5', 'Basic 6'],
+    subjects: [
+      'English', 'Mathematics', 'Basic Science & Tech', 'Social Studies', 'Civic Education',
+      'Yoruba', 'Agricultural Science', 'Home Economics', 'CRS/IRS'
+    ],
+  },
+  'Junior Secondary': {
+    classes: ['JSS1', 'JSS2', 'JSS3'],
+    subjects: [
+      'English', 'Mathematics', 'Basic Science', 'Basic Technology', 'Social Studies',
+      'Civic Education', 'Yoruba', 'Agricultural Science', 'Home Economics',
+      'Business Studies', 'Computer Studies', 'CRS/IRS'
+    ],
+  },
+  'Senior Secondary': {
+    classes: ['SS1', 'SS2', 'SS3'],
+    subjects: [
+      'English', 'Mathematics', 'Biology', 'Chemistry', 'Physics',
+      'Literature-in-English', 'Government', 'CRS/IRS', 'Agricultural Science',
+      'Economics', 'Geography', 'Yoruba', 'Further Mathematics',
+      'Civic Education', 'Computer Studies', 'Technical Drawing'
+    ],
+  },
+};
+
 const sections = [
   'New Result',
   'New Social Behaviour',
@@ -51,12 +85,22 @@ const ResultForm: React.FC = () => {
   const [students, setStudents] = useState<Student[]>([]);
   const [studentScores, setStudentScores] = useState<StudentScores>({});
 
-  const levelOptions: string[] = ['junior secondary', 'senior secondary', 'primary'];
-  const sessionOptions: string[] = ['2023/2024', '2024/2025'];
+  const sessionOptions: string[] = ['2023/2024', '2024/2025', '2022/2023'];
   const termOptions: string[] = ['First', 'Second', 'Third'];
-  const classOptions: string[] = ['jss1', 'jss2', 'ss1', 'ss2'];
-  const subjectOptions: string[] = ['Math', 'English', 'Biology', 'Civic'];
+  const levelOptions: string[] = Object.keys(curriculum);
+  const [classOptions, setClassOptions] = useState<string[]>([]);
+  const [subjectOptions, setSubjectOptions] = useState<string[]>([]);
 
+  useEffect(() => {
+    const level = formValues.Level;
+    if (level && curriculum[level]) {
+      setClassOptions(curriculum[level].classes);
+      setSubjectOptions(curriculum[level].subjects);
+    } else {
+      setClassOptions([]);
+      setSubjectOptions([]);
+    }
+  }, [formValues.Level]);
 
   const isReadyToLoad = Object.values(formValues).every((val) => val);
 
@@ -70,26 +114,23 @@ const ResultForm: React.FC = () => {
     setBehaviourRatings({ ...behaviourRatings, [trait]: value });
   };
 
-    const handleLoadStudents = () => {
+  const handleLoadStudents = () => {
     const selectedClass = formValues.Class;
     const selectedSubject = formValues.Subject;
-
     if (selectedClass && selectedSubject) {
       const filteredStudents = allStudents;
       setStudents(filteredStudents);
     }
   };
 
-
-
-  
-    const handleScoreChange = (id: number, type: 'test' | 'exam', value: string) => {
+  const handleScoreChange = (id: number, type: 'test' | 'exam', value: string) => {
     let num = parseFloat(value);
     if (isNaN(num)) num = 0;
 
     if ((type === 'test' && num > 40) || (type === 'exam' && num > 60) || num < 0 || isNaN(num)) {
       Swal.fire({
         icon: 'error',
+        timer:3000,
         title: 'Invalid Score',
         text: type === 'test'
           ? 'Test score must be between 0 and 40'
@@ -99,13 +140,13 @@ const ResultForm: React.FC = () => {
     }
 
     setStudentScores((prev) => ({
-          ...prev,
-          [id]: {
-            ...prev[id],
-            [type]: num.toString(),
-          },
-        }));
-      };
+      ...prev,
+      [id]: {
+        ...prev[id],
+        [type]: num.toString(),
+      },
+    }));
+  };
 
   const resetScore = (id: number) => {
     setStudentScores((prev) => {
@@ -123,26 +164,24 @@ const ResultForm: React.FC = () => {
   };
 
   const generateComment = (score: number): string => {
-  if (score >= 80) return 'Excellent';
-  if (score >= 70) return 'Very good';
-  if (score >= 65) return 'Good';
-  if (score >= 50) return 'Credit';
-  if (score >= 40) return 'Pass';
-  return 'Fail';
-};
+    if (score >= 80) return 'Excellent';
+    if (score >= 70) return 'Very good';
+    if (score >= 65) return 'Good';
+    if (score >= 50) return 'Credit';
+    if (score >= 40) return 'Pass';
+    return 'Fail';
+  };
 
-
-   const handleSubmitResults = () => {
+  const handleSubmitResults = () => {
     const resultPayload = students.map((student) => {
       const score = studentScores[student.id] || { test: '0', exam: '0' };
       const total = getTotal(student.id);
-
       return {
         studentId: student.id,
         name: student.name,
         test: score.test,
         exam: score.exam,
-        total: total, // number type retained
+        total,
         comment: generateComment(Number(total)),
         ...formValues,
         behaviour: behaviourRatings
@@ -150,17 +189,11 @@ const ResultForm: React.FC = () => {
     });
 
     console.log(resultPayload);
-    Swal.fire({
-      icon: 'success',
-      title: 'Results submitted!'
-    });
-
+    Swal.fire({ icon: 'success', title: 'Results submitted!' });
     setStudentScores({});
     setStudents([]);
     setFormValues({});
   };
-
-  
 
   return (
     <div className="p-4">
@@ -180,7 +213,7 @@ const ResultForm: React.FC = () => {
 
       {activeSection === 'New Result' && (
         <div>
-           <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-col md:flex-row gap-4">
             {(['Level', 'Session', 'Term', 'Class', 'Subject'] as (keyof ResultFormValues)[]).map((field) => (
               <div key={field} className="flex flex-col w-full md:w-1/5">
                 <label className="mb-1">{field}</label>
@@ -202,10 +235,10 @@ const ResultForm: React.FC = () => {
             ))}
           </div>
 
-          <div className=" mt-4">
+          <div className="mt-4">
             <div className='bg-gray-300 p-2 block mb-4 text-center'>
-                <h3 className='font-bold text-xl'>Select Social Behavioural information:</h3>
-                <p>Key: 1- Very Poor, 2- Poor, 3- Fair, 4- Good, 5- Excellent</p>
+              <h3 className='font-bold text-xl'>Select Social Behavioural information:</h3>
+              <p>Key: 1- Very Poor, 2- Poor, 3- Fair, 4- Good, 5- Excellent</p>
             </div>
             {behaviours.map((trait) => (
               <div key={trait} className="flex flex-col">
@@ -215,11 +248,7 @@ const ResultForm: React.FC = () => {
                   onChange={(e: ChangeEvent<HTMLSelectElement>) => handleBehaviourChange(trait, e.target.value)}
                 >
                   <option value="">Select</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
+                  {[1, 2, 3, 4, 5].map(n => <option key={n} value={n}>{n}</option>)}
                 </select>
               </div>
             ))}
@@ -235,7 +264,7 @@ const ResultForm: React.FC = () => {
             Load Students
           </button>
 
-        {students.length > 0 && (
+          {students.length > 0 && (
             <div className="overflow-x-auto mt-6">
               <h3 className="text-lg font-semibold mb-2">
                 Result Entry for {formValues.Subject} - Class {formValues.Class}
@@ -248,11 +277,11 @@ const ResultForm: React.FC = () => {
                     <th className="p-2 border">Exam (60)</th>
                     <th className="p-2 border">Total (100)</th>
                     <th className="p-2 border">Comment</th>
-                    <th className="p-2 border">Action</th>
+                    <th className="p-2 border">Reset</th>
                   </tr>
                 </thead>
                 <tbody>
-                {students.map((student) => {
+                  {students.map((student) => {
                     const scores = studentScores[student.id] || { test: '', exam: '' };
                     const total = getTotal(student.id);
                     return (
@@ -296,8 +325,6 @@ const ResultForm: React.FC = () => {
               </table>
             </div>
           )}
-
-
 
           {students.length > 0 && (
             <button
