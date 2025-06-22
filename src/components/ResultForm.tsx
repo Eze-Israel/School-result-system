@@ -194,7 +194,7 @@ const ResultForm: React.FC = () => {
 
   return (
     <div className="p-4">
-      <div className="flex flex-wrap mb-4 bg-black p-6 md:mx-30 justify-center">
+      <div className="flex flex-wrap mb-4 bg-black p-6 md:mx-30 justify-center text-black">
         {sections.map((section) => (
           <button
             key={section}
@@ -210,7 +210,7 @@ const ResultForm: React.FC = () => {
 
       {activeSection === 'New Result' && (
         <div>
-          <div className="flex flex-col md:flex-row gap-4">
+          <div className="flex flex-col md:flex-row gap-4 text-black">
             {(['Level', 'Session', 'Term', 'Class', 'Subject'] as (keyof ResultFormValues)[]).map((field) => (
               <div key={field} className="flex flex-col w-full md:w-1/5">
                 <label className="mb-1">{field}</label>
@@ -317,7 +317,7 @@ const ResultForm: React.FC = () => {
       
        {activeSection === 'New Social Behaviour' && (
   <div>
-     <div className='bg-gray-300 p-2 block mb-4 text-center'>
+     <div className='bg-gray-300 p-2 block mb-4 text-center text-black'>
           <h3 className='font-bold text-xl'>Select Social Behavioural information:</h3>
           <p>Key: 1- Very Poor, 2- Poor, 3- Fair, 4- Good, 5- Excellent</p>
         </div>
@@ -452,7 +452,7 @@ const ResultForm: React.FC = () => {
 
   {activeSection === 'New Result Comment' && (
     <div className='bg-gray-200 text-black text-center'>
-      
+
       <h2 className='font-bold mb-3 text-2xl'>Here is the general updated comments for 2024/2025 Academic section</h2>
         <p>If score is 80 or above &apos;Excellent&apos;</p>
         <p>If score is 70 or above &apos;Very good&apos;</p>
