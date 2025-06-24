@@ -376,11 +376,11 @@ const ResultForm: React.FC = () => {
       </button>
 
       {students.length > 0 && (
-        <div className="mt-6">
+        <div className="mt-6 text-black">
           <h3 className="text-lg font-semibold mb-2">
             Behavioural Ratings - Class {formValues.Class}
           </h3>
-          <table className="w-full border text-left">
+          <table className="w-full border text-left text-black">
             <thead>
               <tr>
                 <th className="p-2 border">Student</th>
