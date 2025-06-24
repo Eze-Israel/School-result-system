@@ -65,7 +65,7 @@ body {
   display: none;
 }
 
-
+/* start here */
 .user{
   right: 470px;
   font-size: 20px;
@@ -75,6 +75,9 @@ body {
   right: 430px;
   font-size: 22px;
 }
+
+/* stop here */
+
 .dropdown-options{
 position: absolute;
 background-color: cornflowerblue;

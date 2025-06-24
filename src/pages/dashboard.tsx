@@ -181,7 +181,7 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
           <motion.section  
             initial={{ opacity: 0, x: +200 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 2, ease: 'easeOut' }}
+                transition={{ duration: 1, ease: 'easeOut' }}
                 // viewport={{ once: true, amount: 0.2 }}
           >
             <div className="bg-[#090342] text-white p-4 rounded h-40 md:mt-10 mt-4 mx-2 md:mx-10 mb-12 rounded-[20px] flex justify-between">

@@ -1,5 +1,5 @@
 import React, { useState, ChangeEvent, useEffect } from 'react';
-import { Trash2 } from 'lucide-react';
+import { X } from 'lucide-react';
 import Swal from 'sweetalert2';
 
 interface Student {
@@ -247,7 +247,7 @@ const ResultForm: React.FC = () => {
               <h3 className="text-lg font-semibold mb-2">
                 Result Entry for {formValues.Subject} - Class {formValues.Class}
               </h3>
-              <table className="w-full border text-left">
+              <table className="w-full border text-center">
                 <thead>
                   <tr>
                     <th className="p-2 border">Name</th>
@@ -293,7 +293,7 @@ const ResultForm: React.FC = () => {
                             onClick={() => resetScore(student.id)}
                             title="Reset Score"
                           >
-                            <Trash2 size={18} />
+                            <X size={18} />
                           </button>
                         </td>
                       </tr>
