@@ -243,7 +243,7 @@ const ResultForm: React.FC = () => {
           </button>
 
           {students.length > 0 && (
-            <div className="overflow-x-auto mt-6">
+            <div className="overflow-x-auto mt-6 text-black">
               <h3 className="text-lg font-semibold mb-2">
                 Result Entry for {formValues.Subject} - Class {formValues.Class}
               </h3>
@@ -321,8 +321,8 @@ const ResultForm: React.FC = () => {
           <h3 className='font-bold text-xl'>Select Social Behavioural information:</h3>
           <p>Key: 1- Very Poor, 2- Poor, 3- Fair, 4- Good, 5- Excellent</p>
         </div>
-      <div className="flex flex-col md:flex-row gap-4">
-        <div className="flex flex-col w-full md:w-1/3">
+      <div className="flex flex-col md:flex-row gap-4 text-black">
+        <div className="flex flex-col w-full md:w-1/3 text-black">
           <label className="mb-1">Level</label>
           <select
             className="border p-2 rounded"
@@ -336,7 +336,7 @@ const ResultForm: React.FC = () => {
           </select>
         </div>
 
-        <div className="flex flex-col w-full md:w-1/3">
+        <div className="flex flex-col w-full md:w-1/3 text-black">
           <label className="mb-1">Class</label>
           <select
             className="border p-2 rounded"
