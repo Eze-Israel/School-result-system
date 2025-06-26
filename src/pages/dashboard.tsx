@@ -3,6 +3,9 @@
 import { useState } from "react";
 import StudentCards from "@/components/StudentCards";
 import ResultForm from "@/components/ResultForm";
+import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
+
 import {
   BookOpen,
   Folder,
@@ -15,6 +18,7 @@ import {
   LayoutDashboard,
   BellDotIcon,
   Menu,
+
 } from "lucide-react";
 import clsx from "clsx";
 import UserProfile from "@/components/UserProfile";
@@ -115,6 +119,12 @@ const Sidebar = ({
 export default function Dashboard({ user = { name: "King Israel" } }) {
   const [currentTab, setCurrentTab] = useState<TabName>("Dashboard");
   const [showSidebar, setShowSidebar] = useState(false);
+  const router = useRouter();
+
+  const handleNavigation = () => {
+   router.push("/")
+  };
+
 
   const date = new Date();
   const dayOfWeek = date.toLocaleString("default", { weekday: "long" });
@@ -258,6 +268,12 @@ export default function Dashboard({ user = { name: "King Israel" } }) {
               <p>Editing and Setting tools goes here go here.</p>
             </div>
           </section>
+        )}
+
+        {currentTab === "Logout" && (
+                <section>
+        
+                </section>
         )}
       </main>
     </div>
